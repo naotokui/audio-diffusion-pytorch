@@ -1,0 +1,24 @@
+{
+    "os": "Linux-4.4.0-173-generic-x86_64-with-debian-stretch-sid",
+    "python": "3.7.6",
+    "heartbeatAt": "2022-08-16T19:20:36.274625",
+    "startedAt": "2022-08-16T19:20:35.490548",
+    "docker": null,
+    "gpu": "NVIDIA RTX A6000",
+    "gpu_count": 2,
+    "cpu_count": 24,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "/data/tokui/git/audio-diffusion-pytorch/train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/naotokui/audio-diffusion-pytorch",
+        "commit": "cb1551ba43e3d147df008b897003c77aa9d559f2"
+    },
+    "email": "tokui@qosmo.jp",
+    "root": "/data/tokui/git/audio-diffusion-pytorch",
+    "host": "DL-BoxII",
+    "username": "nao",
+    "executable": "/home/nao/anaconda3/envs/p37/bin/python"
+}

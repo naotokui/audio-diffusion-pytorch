@@ -11,13 +11,14 @@ N_SAMPLES = 2 ** 18
 
 crop = Crop(N_SAMPLES)
 
-dataset = WAVDataset(path="/data/tokui/data/bassmusic/", recursive=True, with_sample_rate=44100, transforms=[crop])
+dataset = WAVDataset(path="/data/tokui/data/bassmusic/", recursive=True, with_sample_rate=44100, transforms=crop)
 print(len(dataset))
 
 nb_train_samples = int(len(dataset) * 0.9)
 nb_val_samples = len(dataset) - nb_train_samples
 
 train_dataset, val_dataset = torch.utils.data.random_split(dataset, [nb_train_samples, nb_val_samples])
+print(len(train_dataset))
 
 # %%
 
@@ -44,7 +45,7 @@ dirpath = "{}/models/".format(project_root)
 filename = "{epoch}-{val_loss:.4f}"
 
 #%%
-wandb_logger = WandbLogger(project="audio_diffusion", tags=[])
+wandb_logger = WandbLogger(project="audio_diffusion", tags=[], log_every_n_steps=10)
 
 trainer = Trainer(
     logger=wandb_logger,
@@ -56,11 +57,11 @@ trainer = Trainer(
         # WandbImageCallback(valid_dataset,videoembeds=videoembeds, videopaths=videopaths)
     ],
     gpus=1,
- #   strategy="ddp", # "dp"  a batch will be distributed to GPUS  "dp" the dataset itself is distributed
+#    strategy="ddp", # "dp"  a batch will be distributed to GPUS  "dp" the dataset itself is distributed
     max_epochs=200,
 )
 
-batch_size = 16
+batch_size = 8
 num_workers = 5
 
 train_loader = DataLoader(
@@ -80,7 +81,6 @@ valid_loader = DataLoader(
     drop_last=False,
 #    worker_init_fn=worker_init_fn,
 )
-
 
 #%%
 ## MODEL
@@ -117,7 +117,6 @@ diffusion = Diffusion(
     sigma_data=0.1,
     dynamic_threshold=0.95
 )
-
 
 class LightningBase(LightningModule):
     def training_step(self, batch, batch_idx):
@@ -182,14 +181,10 @@ class DiffusionModel(LightningBase):
         return output       
 
     def step(self, batch, batch_idx):
-        loss = self.forward(batch)
-        # loss = self.loss_fn(audio_out, image_out)
+        audio, _ = batch
+        audio = audio.mean(axis=1, keepdim=True)
+        loss = self.forward(audio)
         return loss
-
-# x = torch.randn(3, 1, SIZE) # Batch of training audio samples
-# print(x.shape)
-# loss = diffusion(x)
-# loss.backward() # Do this many times
 
 diff_model = DiffusionModel(diffusion)
 
@@ -197,10 +192,6 @@ diff_model = DiffusionModel(diffusion)
 wandb_logger.watch(diff_model, log="parameters")
 
 #%%
+
 # training
 trainer.fit(diff_model, train_loader, valid_loader)
-
-
-#%%
-
-

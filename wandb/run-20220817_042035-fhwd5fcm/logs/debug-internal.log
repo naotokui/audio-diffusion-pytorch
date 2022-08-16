@@ -1,0 +1,618 @@
+2022-08-17 04:20:35,506 INFO    StreamThr :21120 [internal.py:wandb_internal():93] W&B internal server running at pid: 21120, started at: 2022-08-17 04:20:35.506168
+2022-08-17 04:20:35,508 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: status
+2022-08-17 04:20:35,510 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: status
+2022-08-17 04:20:35,517 DEBUG   SenderThread:21120 [sender.py:send():302] send: header
+2022-08-17 04:20:35,517 INFO    WriterThread:21120 [datastore.py:open_for_write():75] open: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/run-fhwd5fcm.wandb
+2022-08-17 04:20:35,540 DEBUG   SenderThread:21120 [sender.py:send():302] send: run
+2022-08-17 04:20:35,544 INFO    SenderThread:21120 [sender.py:_maybe_setup_resume():579] checking resume status for None/audio_diffusion/fhwd5fcm
+2022-08-17 04:20:36,198 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: check_version
+2022-08-17 04:20:36,203 INFO    SenderThread:21120 [dir_watcher.py:__init__():216] watching files in: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files
+2022-08-17 04:20:36,203 INFO    SenderThread:21120 [sender.py:_start_run_threads():916] run started: fhwd5fcm with start time 1660677635.500223
+2022-08-17 04:20:36,203 DEBUG   SenderThread:21120 [sender.py:send():302] send: summary
+2022-08-17 04:20:36,203 INFO    SenderThread:21120 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-17 04:20:36,203 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: check_version
+2022-08-17 04:20:36,269 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: run_start
+2022-08-17 04:20:36,274 DEBUG   HandlerThread:21120 [meta.py:__init__():35] meta init
+2022-08-17 04:20:36,274 DEBUG   HandlerThread:21120 [meta.py:__init__():50] meta init done
+2022-08-17 04:20:36,274 DEBUG   HandlerThread:21120 [meta.py:probe():216] probe
+2022-08-17 04:20:36,281 DEBUG   HandlerThread:21120 [meta.py:_setup_git():206] setup git
+2022-08-17 04:20:36,298 DEBUG   HandlerThread:21120 [meta.py:_setup_git():213] setup git done
+2022-08-17 04:20:36,298 DEBUG   HandlerThread:21120 [meta.py:_save_pip():54] save pip
+2022-08-17 04:20:36,299 DEBUG   HandlerThread:21120 [meta.py:_save_pip():68] save pip done
+2022-08-17 04:20:36,299 DEBUG   HandlerThread:21120 [meta.py:_save_conda():75] save conda
+2022-08-17 04:20:37,206 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/requirements.txt
+2022-08-17 04:20:37,206 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/conda-environment.yaml
+2022-08-17 04:20:37,206 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/wandb-summary.json
+2022-08-17 04:20:38,939 DEBUG   HandlerThread:21120 [meta.py:_save_conda():85] save conda done
+2022-08-17 04:20:38,940 DEBUG   HandlerThread:21120 [meta.py:probe():254] probe done
+2022-08-17 04:20:38,999 DEBUG   SenderThread:21120 [sender.py:send():302] send: files
+2022-08-17 04:20:38,999 INFO    SenderThread:21120 [sender.py:_save_file():1156] saving file wandb-metadata.json with policy now
+2022-08-17 04:20:39,010 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:20:39,010 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:20:39,016 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:20:39,017 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:20:39,209 DEBUG   SenderThread:21120 [sender.py:send():302] send: telemetry
+2022-08-17 04:20:39,210 DEBUG   SenderThread:21120 [sender.py:send():302] send: metric
+2022-08-17 04:20:39,210 DEBUG   SenderThread:21120 [sender.py:send():302] send: telemetry
+2022-08-17 04:20:39,210 DEBUG   SenderThread:21120 [sender.py:send():302] send: metric
+2022-08-17 04:20:39,210 WARNING SenderThread:21120 [sender.py:send_metric():1112] Seen metric with glob (shouldn't happen)
+2022-08-17 04:20:39,211 DEBUG   SenderThread:21120 [sender.py:send():302] send: telemetry
+2022-08-17 04:20:39,211 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/conda-environment.yaml
+2022-08-17 04:20:39,212 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/wandb-metadata.json
+2022-08-17 04:20:39,212 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:20:39,663 INFO    Thread-16 :21120 [upload_job.py:push():138] Uploaded file /tmp/tmptf2ab2kewandb/1z23g488-wandb-metadata.json
+2022-08-17 04:20:40,212 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:20:42,212 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:20:49,073 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:20:49,073 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:20:50,215 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:20:51,271 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:20:51,272 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:20:51,363 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:20:52,216 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:20:54,214 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:20:54,214 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:21:07,223 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/config.yaml
+2022-08-17 04:21:09,436 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:21:09,437 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:21:24,633 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:21:24,634 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:21:39,832 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:21:39,832 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:21:55,024 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:21:55,025 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:22:10,227 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:22:10,227 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:22:25,520 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:22:25,520 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:22:34,299 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:22:34,299 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:22:34,336 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:22:34,337 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:22:34,452 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:22:37,256 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:22:40,716 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:22:40,717 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:22:55,910 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:22:55,910 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:23:11,103 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:23:11,104 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:23:16,181 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:23:16,181 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:23:16,188 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:23:16,188 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:23:16,218 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:23:17,270 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:23:26,302 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:23:26,303 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:23:41,500 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:23:41,500 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:23:50,572 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:23:50,573 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:23:51,030 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:23:51,031 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:23:51,138 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:23:52,283 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:23:56,694 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:23:56,695 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:24:11,891 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:24:11,891 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:24:18,342 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:24:18,342 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:24:18,380 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:24:18,381 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:24:18,504 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:24:19,294 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:24:21,983 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:24:21,983 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:24:21,991 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:24:21,991 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:24:22,027 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:24:23,296 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:24:24,615 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:24:24,615 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:24:24,903 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:24:24,903 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:24:24,969 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:24:25,742 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:24:25,742 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:24:26,192 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:24:26,192 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:24:26,297 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:24:26,308 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:24:27,082 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:24:27,082 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:24:28,298 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:24:42,279 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:24:42,279 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:24:57,475 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:24:57,476 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:25:12,673 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:25:12,673 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:25:27,865 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:25:27,866 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:25:43,085 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:25:43,085 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:25:58,310 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:25:58,310 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:26:13,508 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:26:13,508 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:26:28,702 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:26:28,702 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:26:43,899 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:26:43,900 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:26:59,100 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:26:59,100 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:27:14,292 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:27:14,292 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:27:29,487 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:27:29,488 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:27:44,748 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:27:44,748 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:27:59,941 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:27:59,941 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:28:15,144 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:28:15,144 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:28:30,340 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:28:30,340 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:28:45,540 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:28:45,540 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:29:00,742 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:29:02,302 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:29:17,503 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:29:17,504 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:29:35,990 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:29:35,990 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:29:40,839 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:29:40,840 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:29:40,848 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:29:40,848 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:29:40,895 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:29:42,416 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:29:51,180 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:29:51,181 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:29:54,920 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:29:54,921 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:29:55,206 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:29:55,206 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:29:55,265 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:29:56,290 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:29:56,290 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:29:56,298 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:29:56,298 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:29:56,333 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:29:58,422 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:30:05,117 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:30:05,118 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:30:05,398 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:30:05,398 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:30:05,474 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:30:06,381 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:30:06,381 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:30:21,582 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:30:21,582 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:30:27,967 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:30:27,967 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:30:28,005 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:30:28,005 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:30:28,118 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:30:30,419 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:30:30,419 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:30:30,434 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:30:30,942 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:30:30,943 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:30:30,974 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:30:32,435 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:30:36,789 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:30:36,789 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:30:44,293 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:30:44,293 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:30:44,839 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:30:44,839 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:30:44,949 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:30:46,440 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:30:49,364 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:30:49,364 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:30:49,401 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:30:49,401 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:30:49,516 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:30:50,442 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:30:52,062 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:30:52,062 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:30:56,837 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:30:56,837 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:30:57,401 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:30:57,401 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:30:57,493 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:30:57,493 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:30:57,494 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:30:57,494 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:30:57,537 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:30:57,538 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:30:58,445 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:31:00,445 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:31:07,268 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:31:07,268 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:31:22,469 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:31:22,469 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:31:24,110 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:31:24,110 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:31:24,114 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:31:24,114 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:31:24,155 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:31:26,455 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:31:37,657 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:31:37,657 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:31:38,317 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:31:38,317 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:31:38,328 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:31:38,328 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:31:38,365 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:31:40,460 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:31:52,852 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:31:52,852 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:32:08,045 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:32:08,046 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:32:21,356 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:32:21,356 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:32:21,979 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:32:21,979 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:32:22,011 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:32:23,245 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:32:23,245 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:32:38,445 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:32:38,445 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:32:53,643 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:32:53,644 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:32:57,233 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:32:57,234 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:32:57,241 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:32:57,242 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:32:57,278 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:32:58,486 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:33:06,065 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:33:06,066 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:33:06,104 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:33:06,105 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:33:06,218 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:33:08,490 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:33:08,850 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:33:08,851 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:33:08,979 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:33:08,979 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:33:08,988 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:33:08,989 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:33:09,053 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:33:10,491 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:33:11,760 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:33:11,760 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:33:11,765 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:33:11,765 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:33:11,803 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:33:13,511 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:33:13,512 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:33:14,042 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:33:14,042 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:33:14,164 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:33:14,492 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:33:15,891 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:33:15,892 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:33:16,493 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:33:16,497 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:33:16,497 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:33:16,546 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:33:18,494 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:33:20,053 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:33:20,053 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:33:22,344 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:33:22,344 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:33:22,434 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:33:24,056 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:33:24,056 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:33:39,252 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:33:39,253 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:33:41,417 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:33:41,417 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:33:41,426 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:33:41,426 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:33:41,462 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:33:42,503 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:33:54,446 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:33:57,330 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:34:12,529 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:34:12,529 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:34:27,727 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:34:27,727 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:34:42,963 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:34:42,964 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:34:58,161 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:34:58,161 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:35:13,356 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:35:13,356 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:35:26,929 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:35:26,929 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:35:27,316 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:35:27,316 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:35:27,382 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:35:28,588 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:35:28,588 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:35:37,157 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:35:37,157 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:35:37,553 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:35:37,554 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:35:37,609 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:35:43,793 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:35:44,642 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:35:53,778 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:35:53,779 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:35:54,157 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:35:54,157 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:35:54,247 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:35:59,841 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:35:59,841 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:36:01,714 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:36:01,714 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:36:02,086 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:36:02,086 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:36:02,169 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:36:06,227 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:36:06,227 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:36:06,265 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:36:06,265 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:36:06,379 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:36:08,555 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:36:08,943 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:36:08,943 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:36:09,404 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:36:09,404 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:36:09,497 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:36:15,044 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:36:15,044 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:36:30,249 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:36:30,249 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:36:35,465 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:36:35,465 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:36:35,505 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:36:35,505 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:36:35,616 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:36:36,565 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:36:45,449 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:36:45,450 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:37:00,673 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:37:00,673 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:37:15,877 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:37:15,878 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:37:31,077 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:37:31,744 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:37:46,936 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:37:46,936 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:38:02,142 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:38:02,143 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:38:17,337 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:38:17,338 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:38:32,537 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:38:32,538 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:38:47,737 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:38:48,634 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:39:03,827 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:39:03,828 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:39:19,057 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:39:19,058 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:39:20,960 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:39:20,960 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:39:20,976 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:39:20,977 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:39:21,003 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:39:21,345 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:39:21,345 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:39:21,356 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:39:21,356 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:39:21,391 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:39:23,629 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:39:24,141 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:39:24,141 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:39:24,925 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:39:24,925 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:39:25,001 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:39:34,252 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:39:34,253 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:39:39,345 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:39:39,345 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:39:39,720 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:39:39,720 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:39:39,798 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:39:49,448 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:39:49,449 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:40:03,313 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:40:03,313 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:40:03,353 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:40:03,353 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:40:03,476 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:40:04,645 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:40:04,645 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:40:05,645 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:40:19,884 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:40:19,884 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:40:35,470 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:40:35,470 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:40:50,665 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:40:50,665 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:40:59,281 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:40:59,281 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:40:59,657 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:40:59,657 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:40:59,731 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:01,665 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:41:05,883 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:41:07,381 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:41:19,746 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:19,746 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:20,154 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:20,154 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:20,200 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:20,200 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:20,201 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:20,201 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:20,235 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:20,236 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:21,591 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:21,592 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:21,599 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:21,600 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:21,631 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:21,673 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:41:22,580 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:41:22,580 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:41:23,674 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:41:26,198 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:26,199 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:26,985 DEBUG   SenderThread:21120 [sender.py:send():302] send: files
+2022-08-17 04:41:26,986 INFO    SenderThread:21120 [sender.py:_save_file():1156] saving file media/graph/graph_1_summary_9bf031108631175e0a6e.graph.json with policy now
+2022-08-17 04:41:26,986 DEBUG   SenderThread:21120 [sender.py:send():302] send: summary
+2022-08-17 04:41:26,986 INFO    SenderThread:21120 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-17 04:41:26,990 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:26,990 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:27,053 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:27,620 INFO    Thread-63 :21120 [upload_job.py:push():138] Uploaded file /tmp/tmptf2ab2kewandb/3q3lkf6s-media/graph/graph_1_summary_9bf031108631175e0a6e.graph.json
+2022-08-17 04:41:27,676 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:41:27,676 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/wandb-summary.json
+2022-08-17 04:41:27,676 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/media/graph/graph_1_summary_9bf031108631175e0a6e.graph.json
+2022-08-17 04:41:27,676 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/media/graph
+2022-08-17 04:41:27,677 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/media
+2022-08-17 04:41:28,389 INFO    Thread-64 :21120 [upload_job.py:push():138] Uploaded file /tmp/tmptf2ab2kewandb/a1j9dnkr-media/graph/graph_1_summary_9bf031108631175e0a6e.graph.json
+2022-08-17 04:41:32,368 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:32,368 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:32,408 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:32,409 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:32,520 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:33,678 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:41:35,273 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:35,273 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:35,313 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:35,313 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:35,427 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:35,747 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:35,747 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:35,755 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:35,755 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:35,789 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:36,188 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:36,188 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:36,196 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:36,196 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:36,232 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:37,680 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:41:37,834 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:41:37,834 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:41:53,960 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:41:53,961 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:41:56,958 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:56,958 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:56,968 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:56,968 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:57,007 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:57,671 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:57,671 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:57,678 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:57,678 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:57,713 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:59,415 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:41:59,415 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:41:59,453 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:41:59,453 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:41:59,567 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:41:59,691 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:01,692 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:03,040 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:03,041 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:03,048 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:03,048 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:03,085 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:04,089 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:04,089 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:04,097 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:04,098 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:04,133 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:04,534 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:04,534 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:04,572 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:04,573 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:04,687 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:05,491 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:05,491 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:05,500 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:05,500 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:05,534 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:05,694 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:07,695 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:09,159 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:42:09,159 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:42:14,750 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:14,750 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:15,440 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:15,440 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:15,508 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:17,700 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:19,673 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:19,673 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:20,176 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:20,177 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:20,240 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:21,702 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:24,354 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:42:24,354 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:42:39,551 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:42:39,551 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:42:43,862 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:43,863 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:43,871 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:43,871 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:43,909 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:45,713 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:46,298 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:46,298 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:46,337 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:46,337 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:46,451 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:46,833 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:46,833 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:46,841 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:46,841 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:46,877 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:47,714 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:47,936 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:47,936 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:47,944 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:47,944 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:47,984 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:48,662 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:42:48,662 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:42:48,670 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:42:48,670 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:42:48,708 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:42:49,715 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:42:54,748 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:42:54,748 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:43:06,146 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:43:06,146 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:43:06,786 DEBUG   SenderThread:21120 [sender.py:send():302] send: files
+2022-08-17 04:43:06,786 INFO    SenderThread:21120 [sender.py:_save_file():1156] saving file media/graph/graph_2_summary_4ca0e0ed7de18b34a9f9.graph.json with policy now
+2022-08-17 04:43:06,786 DEBUG   SenderThread:21120 [sender.py:send():302] send: summary
+2022-08-17 04:43:06,786 INFO    SenderThread:21120 [sender.py:_save_file():1156] saving file wandb-summary.json with policy end
+2022-08-17 04:43:06,790 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:43:06,790 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:43:06,898 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:43:07,454 INFO    Thread-84 :21120 [upload_job.py:push():138] Uploaded file /tmp/tmptf2ab2kewandb/1c0v2o9a-media/graph/graph_2_summary_4ca0e0ed7de18b34a9f9.graph.json
+2022-08-17 04:43:07,724 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
+2022-08-17 04:43:07,724 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/wandb-summary.json
+2022-08-17 04:43:07,724 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_created():275] file/dir created: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/media/graph/graph_2_summary_4ca0e0ed7de18b34a9f9.graph.json
+2022-08-17 04:43:07,725 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/media/graph
+2022-08-17 04:43:08,324 INFO    Thread-85 :21120 [upload_job.py:push():138] Uploaded file /tmp/tmptf2ab2kewandb/3ceky8f0-media/graph/graph_2_summary_4ca0e0ed7de18b34a9f9.graph.json
+2022-08-17 04:43:13,367 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: stop_status
+2022-08-17 04:43:13,367 DEBUG   SenderThread:21120 [sender.py:send_request():316] send_request: stop_status
+2022-08-17 04:43:18,621 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: resume
+2022-08-17 04:43:18,621 INFO    HandlerThread:21120 [handler.py:handle_request_resume():690] starting system metrics thread
+2022-08-17 04:43:18,661 DEBUG   HandlerThread:21120 [handler.py:handle_request():141] handle_request: pause
+2022-08-17 04:43:18,661 INFO    HandlerThread:21120 [handler.py:handle_request_pause():699] stopping system metrics thread
+2022-08-17 04:43:18,773 DEBUG   SenderThread:21120 [sender.py:send():302] send: stats
+2022-08-17 04:43:19,729 INFO    Thread-12 :21120 [dir_watcher.py:_on_file_modified():292] file/dir modified: /data/tokui/git/audio-diffusion-pytorch/wandb/run-20220817_042035-fhwd5fcm/files/output.log
