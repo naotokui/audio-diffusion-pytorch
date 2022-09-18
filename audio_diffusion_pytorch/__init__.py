@@ -1,5 +1,6 @@
 from .diffusion import (
     ADPM2Sampler,
+    AEulerSampler,
     Diffusion,
     DiffusionInpainter,
     DiffusionSampler,
@@ -11,5 +12,12 @@ from .diffusion import (
     Schedule,
     SpanBySpanComposer,
 )
-from .model import AudioAutoEncoderModel, AudioDiffusionModel, Model1d
-from .modules import AutoEncoder1d, UNet1d
+from .model import (
+    AudioDiffusionAutoencoder,
+    AudioDiffusionModel,
+    AudioDiffusionUpsampler,
+    DiffusionAutoencoder1d,
+    DiffusionUpsampler1d,
+    Model1d,
+)
+from .modules import Encoder1d, UNet1d

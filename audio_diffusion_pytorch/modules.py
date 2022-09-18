@@ -1,4 +1,4 @@
-from math import log, pi
+from math import pi
 from typing import List, Optional, Sequence, Tuple, Union
 
 import torch
@@ -36,7 +36,6 @@ def Downsample1d(
         kernel_size=factor * kernel_multiplier + 1,
         stride=factor,
         padding=factor * (kernel_multiplier // 2),
-        groups=in_channels // 4,
     )
 
 
@@ -80,6 +79,9 @@ class ConvBlock1d(nn.Module):
         in_channels: int,
         out_channels: int,
         *,
+        kernel_size: int = 3,
+        stride: int = 1,
+        padding: int = 1,
         dilation: int = 1,
         num_groups: int = 8,
         use_norm: bool = True,
@@ -95,7 +97,8 @@ class ConvBlock1d(nn.Module):
         self.project = Conv1d(
             in_channels=in_channels,
             out_channels=out_channels,
-            kernel_size=3,
+            kernel_size=kernel_size,
+            stride=stride,
             padding=dilation,
             dilation=dilation,
         )
@@ -119,8 +122,13 @@ class ResnetBlock1d(nn.Module):
         num_groups: int,
         dilation: int = 1,
         time_context_features: Optional[int] = None,
+        context_features: Optional[int] = None,
+        context_heads: Optional[int] = None,
+        context_head_features: Optional[int] = None,
     ) -> None:
         super().__init__()
+
+        self.use_context = exists(context_features)
 
         self.to_time_embedding = (
             nn.Sequential(
@@ -140,6 +148,19 @@ class ResnetBlock1d(nn.Module):
             dilation=dilation,
         )
 
+        if self.use_context:
+            assert exists(context_heads) and exists(context_head_features)
+            self.cross_attend = EinopsToAndFrom(
+                "b c l",
+                "b l c",
+                CrossAttention(
+                    features=out_channels,
+                    context_features=context_features,
+                    head_features=context_head_features,
+                    num_heads=context_heads,
+                ),
+            )
+
         self.block2 = ConvBlock1d(
             in_channels=out_channels, out_channels=out_channels, num_groups=num_groups
         )
@@ -150,9 +171,19 @@ class ResnetBlock1d(nn.Module):
             else nn.Identity()
         )
 
-    def forward(self, x: Tensor, time_context: Optional[Tensor] = None) -> Tensor:
+    def forward(
+        self,
+        x: Tensor,
+        time_context: Optional[Tensor] = None,
+        context: Optional[Tensor] = None,
+    ) -> Tensor:
+        assert_message = "You must provide context tokens if context_features > 0"
+        assert not (self.use_context ^ exists(context)), assert_message
 
         h = self.block1(x)
+
+        if self.use_context and exists(context):
+            h = self.cross_attend(h, context=context) + h
 
         # Compute scale and shift from time_context
         scale_shift = None
@@ -382,6 +413,45 @@ class Attention(nn.Module):
         return x
 
 
+class CrossAttention(nn.Module):
+    def __init__(
+        self,
+        features: int,
+        *,
+        context_features: int = None,
+        head_features: int = 64,
+        num_heads: int = 8,
+    ):
+        super().__init__()
+        mid_features = head_features * num_heads
+        context_features = default(context_features, features)
+
+        self.norm_in = LayerNorm(features=features, bias=False)
+        self.norm_context = LayerNorm(features=context_features, bias=False)
+
+        self.to_q = nn.Linear(
+            in_features=features, out_features=mid_features, bias=False
+        )
+        self.to_kv = nn.Linear(
+            in_features=context_features, out_features=mid_features * 2, bias=False
+        )
+        self.attention = AttentionBase(
+            features,
+            num_heads=num_heads,
+            head_features=head_features,
+            use_null_tokens=False,
+        )
+
+    def forward(self, x: Tensor, context: Tensor, mask: Tensor = None) -> Tensor:
+        b, n, d = x.shape
+        x = self.norm_in(x)
+        context = self.norm_context(context)
+        # Queries form x, k and v from context
+        q, k, v = (self.to_q(x), *torch.chunk(self.to_kv(context), chunks=2, dim=-1))
+        x = self.attention(q, k, v, mask=mask)
+        return x
+
+
 """
 Transformer Blocks
 """
@@ -417,19 +487,6 @@ Time Embeddings
 """
 
 
-class SinusoidalPositionalEmbedding(nn.Module):
-    def __init__(self, dim: int):
-        super().__init__()
-        self.dim = dim
-
-    def forward(self, x: Tensor) -> Tensor:
-        half_dim = self.dim // 2
-        factor = log(10000) / (half_dim - 1)
-        embedding = torch.exp(torch.arange(half_dim, device=x.device) * -factor)
-        embedding = rearrange(x, "i -> i 1") * rearrange(embedding, "j -> 1 j")
-        return torch.cat((embedding.sin(), embedding.cos()), dim=-1)
-
-
 class LearnedPositionalEmbedding(nn.Module):
     """Used for continuous time"""
 
@@ -447,16 +504,10 @@ class LearnedPositionalEmbedding(nn.Module):
         return fouriered
 
 
-def TimePositionalEmbedding(
-    dim: int, out_features: int, use_learned: bool
-) -> nn.Module:
+def TimePositionalEmbedding(dim: int, out_features: int) -> nn.Module:
     return nn.Sequential(
-        LearnedPositionalEmbedding(dim)
-        if use_learned
-        else SinusoidalPositionalEmbedding(dim),
-        nn.Linear(
-            in_features=dim + 1 if use_learned else dim, out_features=out_features
-        ),
+        LearnedPositionalEmbedding(dim),
+        nn.Linear(in_features=dim + 1, out_features=out_features),
     )
 
 
@@ -477,16 +528,21 @@ class DownsampleBlock1d(nn.Module):
         kernel_multiplier: int = 2,
         use_pre_downsample: bool = True,
         use_skip: bool = False,
+        extract_channels: int = 0,
+        context_channels: int = 0,
         use_attention: bool = False,
         attention_heads: Optional[int] = None,
         attention_features: Optional[int] = None,
         attention_multiplier: Optional[int] = None,
         time_context_features: Optional[int] = None,
+        context_features: Optional[int] = None,
     ):
         super().__init__()
         self.use_pre_downsample = use_pre_downsample
         self.use_skip = use_skip
         self.use_attention = use_attention
+        self.use_extract = extract_channels > 0
+        self.use_context = context_channels > 0
 
         channels = out_channels if use_pre_downsample else in_channels
 
@@ -500,12 +556,15 @@ class DownsampleBlock1d(nn.Module):
         self.blocks = nn.ModuleList(
             [
                 ResnetBlock1d(
-                    in_channels=channels,
+                    in_channels=channels + (context_channels if i == 0 else 0),
                     out_channels=channels,
                     num_groups=num_groups,
                     time_context_features=time_context_features,
+                    context_features=context_features,
+                    context_heads=attention_heads,
+                    context_head_features=attention_features,
                 )
-                for _ in range(num_layers)
+                for i in range(num_layers)
             ]
         )
 
@@ -522,16 +581,31 @@ class DownsampleBlock1d(nn.Module):
                 multiplier=attention_multiplier,
             )
 
+        if self.use_extract:
+            num_extract_groups = min(num_groups, extract_channels)
+            self.to_extracted = ResnetBlock1d(
+                in_channels=out_channels,
+                out_channels=extract_channels,
+                num_groups=num_extract_groups,
+            )
+
     def forward(
-        self, x: Tensor, t: Optional[Tensor] = None
+        self,
+        x: Tensor,
+        t: Optional[Tensor] = None,
+        channels: Optional[Tensor] = None,
+        tokens: Optional[Tensor] = None,
     ) -> Union[Tuple[Tensor, List[Tensor]], Tensor]:
 
         if self.use_pre_downsample:
             x = self.downsample(x)
 
+        if self.use_context and exists(channels):
+            x = torch.cat([x, channels], dim=1)
+
         skips = []
         for block in self.blocks:
-            x = block(x, t)
+            x = block(x, t, context=tokens)
             skips += [x] if self.use_skip else []
 
         if self.use_attention:
@@ -540,6 +614,10 @@ class DownsampleBlock1d(nn.Module):
 
         if not self.use_pre_downsample:
             x = self.downsample(x)
+
+        if self.use_extract:
+            extracted = self.to_extracted(x)
+            return x, extracted
 
         return (x, skips) if self.use_skip else x
 
@@ -563,6 +641,7 @@ class UpsampleBlock1d(nn.Module):
         attention_features: Optional[int] = None,
         attention_multiplier: Optional[int] = None,
         time_context_features: Optional[int] = None,
+        context_features: Optional[int] = None,
     ):
         super().__init__()
 
@@ -586,6 +665,9 @@ class UpsampleBlock1d(nn.Module):
                     out_channels=channels,
                     num_groups=num_groups,
                     time_context_features=time_context_features,
+                    context_features=context_features,
+                    context_heads=attention_heads,
+                    context_head_features=attention_features,
                 )
                 for _ in range(num_layers)
             ]
@@ -619,6 +701,7 @@ class UpsampleBlock1d(nn.Module):
         x: Tensor,
         skips: Optional[List[Tensor]] = None,
         t: Optional[Tensor] = None,
+        tokens: Optional[Tensor] = None,
     ) -> Tensor:
 
         if self.use_pre_upsample:
@@ -626,7 +709,7 @@ class UpsampleBlock1d(nn.Module):
 
         for block in self.blocks:
             x = self.add_skip(x, skip=skips.pop()) if exists(skips) else x
-            x = block(x, t)
+            x = block(x, t, context=tokens)
 
         if self.use_attention:
             x = self.transformer(x)
@@ -647,6 +730,7 @@ class BottleneckBlock1d(nn.Module):
         attention_heads: Optional[int] = None,
         attention_features: Optional[int] = None,
         time_context_features: Optional[int] = None,
+        context_features: Optional[int] = None,
     ):
         super().__init__()
 
@@ -661,6 +745,9 @@ class BottleneckBlock1d(nn.Module):
             out_channels=channels,
             num_groups=num_groups,
             time_context_features=time_context_features,
+            context_features=context_features,
+            context_heads=attention_heads,
+            context_head_features=attention_features,
         )
 
         if use_attention:
@@ -680,17 +767,62 @@ class BottleneckBlock1d(nn.Module):
             out_channels=channels,
             num_groups=num_groups,
             time_context_features=time_context_features,
+            context_features=context_features,
+            context_heads=attention_heads,
+            context_head_features=attention_features,
         )
 
-    def forward(self, x: Tensor, t: Optional[Tensor] = None) -> Tensor:
-        x = self.pre_block(x, t)
+    def forward(
+        self,
+        x: Tensor,
+        t: Optional[Tensor] = None,
+        tokens: Optional[Tensor] = None,
+    ) -> Tensor:
+        x = self.pre_block(x, t, context=tokens)
         if self.use_attention:
             x = self.attention(x)
-        x = self.post_block(x, t)
+        x = self.post_block(x, t, context=tokens)
         return x
 
 
-""" UNets """
+"""
+UNet
+"""
+
+
+class ConvOut1d(nn.Module):
+    def __init__(
+        self, in_channels: int, out_channels: int, kernel_sizes: Sequence[int]
+    ):
+        super().__init__()
+        mid_channels = in_channels * 8
+
+        self.block1 = nn.ModuleList(
+            Conv1d(
+                in_channels=in_channels,
+                out_channels=mid_channels,
+                kernel_size=kernel_size,
+                padding=(kernel_size - 1) // 2,
+            )
+            for kernel_size in kernel_sizes
+        )
+
+        self.block2 = nn.ModuleList(
+            Conv1d(
+                in_channels=mid_channels,
+                out_channels=out_channels,
+                kernel_size=kernel_size,
+                padding=(kernel_size - 1) // 2,
+            )
+            for kernel_size in kernel_sizes
+        )
+
+    def forward(self, x: Tensor) -> Tensor:
+        xs = torch.stack([conv(x) for conv in self.block1])
+        x = reduce(xs, "n b c t -> b c t", "sum")
+        xs = torch.stack([conv(x) for conv in self.block2])
+        x = reduce(xs, "n b c t -> b c t", "sum")
+        return x
 
 
 class UNet1d(nn.Module):
@@ -709,18 +841,34 @@ class UNet1d(nn.Module):
         resnet_groups: int,
         kernel_multiplier_downsample: int,
         kernel_sizes_init: Sequence[int],
-        use_learned_time_embedding: bool,
         use_nearest_upsample: bool,
         use_skip_scale: bool,
         use_attention_bottleneck: bool,
         out_channels: Optional[int] = None,
+        context_channels: Optional[Sequence[int]] = None,
+        context_features: Optional[int] = None,
+        kernel_sizes_out: Optional[Sequence[int]] = None,
     ):
         super().__init__()
 
         out_channels = default(out_channels, in_channels)
+        context_channels = list(default(context_channels, []))
         time_context_features = channels * 4
+
         num_layers = len(multipliers) - 1
         self.num_layers = num_layers
+
+        use_context = len(context_channels) > 0
+        self.use_context = use_context
+
+        context_pad_length = num_layers + 1 - len(context_channels)
+        context_channels = context_channels + [0] * context_pad_length
+        self.context_channels = context_channels
+
+        if use_context:
+            has_context = [c > 0 for c in context_channels]
+            self.has_context = has_context
+            self.context_ids = [sum(has_context[:i]) for i in range(len(has_context))]
 
         assert (
             len(factors) == num_layers
@@ -731,7 +879,7 @@ class UNet1d(nn.Module):
         self.to_in = nn.Sequential(
             Rearrange("b c (l p) -> b (c p) l", p=patch_size),
             CrossEmbed1d(
-                in_channels=in_channels * patch_size,
+                in_channels=(in_channels + context_channels[0]) * patch_size,
                 out_channels=channels,
                 kernel_sizes=kernel_sizes_init,
                 stride=1,
@@ -739,11 +887,7 @@ class UNet1d(nn.Module):
         )
 
         self.to_time = nn.Sequential(
-            TimePositionalEmbedding(
-                dim=channels,
-                out_features=time_context_features,
-                use_learned=use_learned_time_embedding,
-            ),
+            TimePositionalEmbedding(dim=channels, out_features=time_context_features),
             nn.SiLU(),
             nn.Linear(
                 in_features=time_context_features, out_features=time_context_features
@@ -756,6 +900,8 @@ class UNet1d(nn.Module):
                     in_channels=channels * multipliers[i],
                     out_channels=channels * multipliers[i + 1],
                     time_context_features=time_context_features,
+                    context_channels=context_channels[i + 1],
+                    context_features=context_features,
                     num_layers=num_blocks[i],
                     factor=factors[i],
                     kernel_multiplier=kernel_multiplier_downsample,
@@ -774,6 +920,7 @@ class UNet1d(nn.Module):
         self.bottleneck = BottleneckBlock1d(
             channels=channels * multipliers[-1],
             time_context_features=time_context_features,
+            context_features=context_features,
             num_groups=resnet_groups,
             use_attention=use_attention_bottleneck,
             attention_heads=attention_heads,
@@ -786,6 +933,7 @@ class UNet1d(nn.Module):
                     in_channels=channels * multipliers[i + 1],
                     out_channels=channels * multipliers[i],
                     time_context_features=time_context_features,
+                    context_features=context_features,
                     num_layers=num_blocks[i] + (1 if attentions[i] else 0),
                     factor=factors[i],
                     use_nearest=use_nearest_upsample,
@@ -805,10 +953,9 @@ class UNet1d(nn.Module):
 
         self.to_out = nn.Sequential(
             ResnetBlock1d(
-                in_channels=channels,
+                in_channels=channels + context_channels[1],
                 out_channels=channels,
                 num_groups=resnet_groups,
-                time_context_features=time_context_features,
             ),
             Conv1d(
                 in_channels=channels,
@@ -816,73 +963,106 @@ class UNet1d(nn.Module):
                 kernel_size=1,
             ),
             Rearrange("b (c p) l -> b c (l p)", p=patch_size),
+            ConvOut1d(
+                in_channels=out_channels,
+                out_channels=out_channels,
+                kernel_sizes=kernel_sizes_out,
+            )
+            if exists(kernel_sizes_out)
+            else nn.Identity(),
         )
 
-    def forward(self, x: Tensor, t: Tensor):
+    def get_context(
+        self, context_list: Optional[Sequence[Tensor]] = None, layer: int = 0
+    ) -> Optional[Tensor]:
+        """Concatenates context to x, if present, and checks that shape is correct"""
+        use_context = self.use_context and self.has_context[layer]
+        if not use_context:
+            return None
+        assert exists(context_list), "Missing context"
+        # Get context index (skipping zero channel contexts)
+        context_id = self.context_ids[layer]
+        # Get context
+        context = context_list[context_id]
+        message = f"Missing context for layer {layer} at index {context_id}"
+        assert exists(context), message
+        # Check channels
+        channels = self.context_channels[layer]
+        message = f"Expected context with {channels} channels at index {context_id}"
+        assert context.shape[1] == channels, message
+        return context
+
+    def forward(
+        self,
+        x: Tensor,
+        t: Tensor,
+        *,
+        context: Optional[Sequence[Tensor]] = None,
+        tokens: Optional[Tensor] = None,
+    ):
+        c = self.get_context(context)
+        x = torch.cat([x, c], dim=1) if exists(c) else x
 
         x = self.to_in(x)
         t = self.to_time(t)
         skips_list = []
 
-        for downsample in self.downsamples:
-            x, skips = downsample(x, t)
+        for i, downsample in enumerate(self.downsamples):
+            channels = self.get_context(context, layer=i + 1)
+            x, skips = downsample(x, t, channels=channels, tokens=tokens)
             skips_list += [skips]
 
-        x = self.bottleneck(x, t)
+        x = self.bottleneck(x, t, tokens=tokens)
 
-        for upsample in self.upsamples:
+        for i, upsample in enumerate(self.upsamples):
             skips = skips_list.pop()
-            x = upsample(x, skips, t)
+            x = upsample(x, skips, t, tokens=tokens)
 
         x = self.to_out(x)  # t?
 
         return x
 
 
-""" Autoencoders """
+"""
+Encoder
+"""
 
 
-def gaussian_sample(mean: Tensor, logvar: Tensor) -> Tensor:
-    std = torch.exp(0.5 * logvar)
-    eps = torch.randn_like(std)
-    sample = mean + std * eps
-    return sample
-
-
-def kl_loss(mean: Tensor, logvar: Tensor) -> Tensor:
-    losses = reduce(1 + logvar - mean ** 2 - logvar.exp(), "b ... -> b", "sum")
-    loss = reduce(-0.5 * losses, "b -> 1", "mean")
-    return loss
-
-
-class AutoEncoder1d(nn.Module):
+class Encoder1d(nn.Module):
     def __init__(
         self,
         in_channels: int,
-        bottleneck_channels: int,
         channels: int,
         patch_size: int,
+        resnet_groups: int,
+        kernel_multiplier_downsample: int,
+        kernel_sizes_init: Sequence[int],
         multipliers: Sequence[int],
         factors: Sequence[int],
         num_blocks: Sequence[int],
-        resnet_groups: int,
-        loss_kl_weight: float,
-        kernel_multiplier_downsample: int = 2,
+        extract_channels: Sequence[int],
     ):
         super().__init__()
 
-        num_layers = len(multipliers) - 1
+        num_layers = len(extract_channels)
         self.num_layers = num_layers
-        self.loss_kl_weight = loss_kl_weight
 
-        assert len(factors) == num_layers and len(num_blocks) == num_layers
+        use_extract = [channels > 0 for channels in extract_channels]
+        self.use_extract = use_extract
+
+        assert (
+            len(multipliers) >= num_layers + 1
+            and len(factors) >= num_layers
+            and len(num_blocks) >= num_layers
+        )
 
         self.to_in = nn.Sequential(
             Rearrange("b c (l p) -> b (c p) l", p=patch_size),
-            Conv1d(
+            CrossEmbed1d(
                 in_channels=in_channels * patch_size,
                 out_channels=channels,
-                kernel_size=1,
+                kernel_sizes=kernel_sizes_init,
+                stride=1,
             ),
         )
 
@@ -891,80 +1071,25 @@ class AutoEncoder1d(nn.Module):
                 DownsampleBlock1d(
                     in_channels=channels * multipliers[i],
                     out_channels=channels * multipliers[i + 1],
-                    num_layers=num_blocks[i],
                     factor=factors[i],
                     kernel_multiplier=kernel_multiplier_downsample,
                     num_groups=resnet_groups,
+                    num_layers=num_blocks[i],
+                    extract_channels=extract_channels[i],
                 )
                 for i in range(num_layers)
             ]
         )
 
-        self.pre_bottleneck = Conv1d(
-            in_channels=channels * multipliers[-1],
-            out_channels=bottleneck_channels * 2,
-            kernel_size=1,
-        )
-
-        self.post_bottleneck = Conv1d(
-            in_channels=bottleneck_channels,
-            out_channels=channels * multipliers[-1],
-            kernel_size=1,
-        )
-
-        self.upsamples = nn.ModuleList(
-            [
-                UpsampleBlock1d(
-                    in_channels=channels * multipliers[i + 1],
-                    out_channels=channels * multipliers[i],
-                    num_layers=num_blocks[i],
-                    factor=factors[i],
-                    num_groups=resnet_groups,
-                )
-                for i in reversed(range(num_layers))
-            ]
-        )
-
-        self.to_out = nn.Sequential(
-            Conv1d(
-                in_channels=channels,
-                out_channels=in_channels * patch_size,
-                kernel_size=1,
-            ),
-            Rearrange("b (c p) l -> b c (l p)", p=patch_size),
-        )
-
-    def encode(
-        self, x: Tensor, *, with_kl_loss: bool = False
-    ) -> Union[Tensor, Tuple[Tensor, Tensor]]:
+    def forward(self, x: Tensor) -> List[Tensor]:
         x = self.to_in(x)
+        channels_list = []
 
-        for downsample in self.downsamples:
-            x = downsample(x)
+        for downsample, use_extract in zip(self.downsamples, self.use_extract):
+            if use_extract:
+                x, channels = downsample(x)
+                channels_list += [channels]
+            else:
+                x = downsample(x)
 
-        mean_and_var = self.pre_bottleneck(x)
-
-        # Chunk channels to mean and log variance and sample in VAE style
-        mean, logvar = torch.chunk(mean_and_var, chunks=2, dim=1)
-        logvar = torch.clamp(logvar, -30.0, 20.0)
-        bottleneck = gaussian_sample(mean, logvar)
-
-        if with_kl_loss:
-            return bottleneck, kl_loss(mean, logvar)
-
-        return bottleneck
-
-    def decode(self, x: Tensor) -> Tensor:
-        x = self.post_bottleneck(x)
-
-        for upsample in self.upsamples:
-            x = upsample(x)
-
-        return self.to_out(x)
-
-    def forward(self, x: Tensor) -> Tensor:
-        """Returns autoencoding loss"""
-        z, kl_loss = self.encode(x, with_kl_loss=True)
-        y = self.decode(z)
-        loss = F.mse_loss(x, y) + kl_loss * self.loss_kl_weight
-        return loss
+        return channels_list
